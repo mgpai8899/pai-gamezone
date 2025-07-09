@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Pai Game-Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required autocomplete="off" />
+      <input type="password" id="password" placeholder="Password" required autocomplete="off" />
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('message');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let username = document.getElementById('username').value.trim();
+      let password = document.getElementById('password').value.trim();
+
+      let users = JSON.parse(localStorage.getItem('users')) || {};
+
+      if (!users[username]) {
+        msg.innerHTML = '<p class="error">Username does not exist!</p>';
+        return;
+      }
+
+      if (users[username].password !== password) {
+        msg.innerHTML = '<p class="error">Incorrect password!</p>';
+        return;
+      }
+
+      localStorage.setItem('loggedInUser', username);
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
