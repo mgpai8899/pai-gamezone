@@ -1,1 +1,82 @@
-/* style.css placeholder */
+/* style.css */
+
+body {
+  margin: 0; padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: url('https://i.ibb.co/NWm6Kv8/casino-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  background: rgba(0,0,0,0.75);
+  border-radius: 15px;
+  padding: 20px 30px;
+  max-width: 450px;
+  margin: 80px auto;
+  box-shadow: 0 0 25px #FFD700;
+}
+
+h1 {
+  color: #FFD700;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 3px #000;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  background: #FFD700;
+  color: black;
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 6px #000;
+  transition: 0.2s;
+}
+
+button:hover {
+  box-shadow: 0 0 15px #FFD700;
+  transform: scale(1.05);
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  margin: 10px 0;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.error {
+  color: #FF6B6B;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.success {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#coinDisplay {
+  color: #00FF00;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+a {
+  color: #FFD700;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
