@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slot Game - Pai Game-Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .slot-container {
+      font-size: 40px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      user-select: none;
+    }
+
+    #resultMessage {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎰 Slot Game 🎰</h1>
+    <p>Coins: <span id="coinDisplay"></span></p>
+    <div class="slot-container" id="slots">
+      <div id="slot1">🍒</div>
+      <div id="slot2">🍋</div>
+      <div id="slot3">🍉</div>
+    </div>
+    <button id="spinBtn">Spin (Cost: 5 coins)</button>
+    <p id="resultMessage"></p>
+    <button onclick="goBack()">Back to Lobby</button>
+  </div>
+
+  <script>
+    const fruits = ['🍒', '🍋', '🍉', '🍊', '🍇', '⭐', '💎'];
+    const spinBtn = document.getElementById('spinBtn');
+    const resultMessage = document.getElementById('resultMessage');
+
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+
+    function checkLogin() {
+      const user = localStorage.getItem('loggedInUser');
+      if (!user) {
+        window.location.href = 'login.html';
+        return null;
+      }
+      return user;
+    }
+
+    function loadCoins(user) {
+      const users = JSON.parse(localStorage.getItem('users')) || {};
+      return users[user] ? users[user].coins : 0;
+    }
+
+    function updateCoins(user, coins) {
+      const users = JSON.parse(localStorage.getItem('users')) || {};
+      if (users[user]) {
+        users[user].coins = coins;
+        localStorage.setItem('users', JSON.stringify(users));
+      }
+    }
+
+    function loadUserData() {
+      const user = checkLogin();
+      if (!user) return;
+      const coins = loadCoins(user);
+      document.getElementById('coinDisplay').innerText = coins;
+      return user;
+    }
+
+    function spinSlots() {
+      const user = loadUserData();
+      if (!user) return;
+
+      let coins = loadCoins(user);
+      if (coins < 5) {
+        resultMessage.innerText = "Not enough coins to spin!";
+        return;
+      }
+
+      coins -= 5; // cost
+      updateCoins(user, coins);
+
+      // Spin animation - random fruits
+      let results = [];
+      for (let i = 0; i < 3; i++) {
+        const fruit = fruits[Math.floor(Math.random() * fruits.length)];
+        results.push(fruit);
+        document.getElementById('slot' + (i+1)).innerText = fruit;
+      }
+
+      // Check winning condition:
+      let winCoins = 0;
+      if (results[0] === results[1] && results[1] === results[2]) {
+        // Jackpot!
+        winCoins = 50;
+        resultMessage.innerText = "🎉 Jackpot! You won 50 coins!";
+      } else if (results[0] === results[1] || results[1] === results[2] || results[0] === results[2]) {
+        // Partial win
+        winCoins = 10;
+        resultMessage.innerText = "🎊 You matched 2 fruits! You won 10 coins!";
+      } else {
+        resultMessage.innerText = "Try again!";
+      }
+
+      coins += winCoins;
+      updateCoins(user, coins);
+      document.getElementById('coinDisplay').innerText = coins;
+    }
+
+    spinBtn.addEventListener('click', spinSlots);
+
+    loadUserData();
+  </script>
+</body>
+</html>
