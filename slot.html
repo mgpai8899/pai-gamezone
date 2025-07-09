@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slot Game 🎰</title>
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #222;
+      padding: 15px;
+      font-size: 20px;
+    }
+    .balance {
+      margin-top: 10px;
+      color: gold;
+    }
+    .reels {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .reel {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      font-size: 40px;
+      line-height: 100px;
+      background: #333;
+      margin: 0 10px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 30px;
+      font-size: 16px;
+      background: gold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🎰 Pai Slot Game
+    <div class="balance">Coins: <span id="coin-balance">0</span></div>
+  </header>
+
+  <div class="reels">
+    <div class="reel" id="reel1">🍒</div>
+    <div class="reel" id="reel2">🍋</div>
+    <div class="reel" id="reel3">🍊</div>
+  </div>
+
+  <button onclick="spin()">SPIN (-10 Coins)</button>
+
+  <script>
+    let coins = localStorage.getItem('coins') ? parseInt(localStorage.getItem('coins')) : 100;
+    document.getElementById('coin-balance').innerText = coins;
+
+    const symbols = ["🍒", "🍋", "🍊", "🍉", "⭐", "🔔"];
+
+    function spin() {
+      if (coins < 10) {
+        alert("Not enough coins!");
+        return;
+      }
+
+      coins -= 10;
+
+      const r1 = symbols[Math.floor(Math.random() * symbols.length)];
+      const r2 = symbols[Math.floor(Math.random() * symbols.length)];
+      const r3 = symbols[Math.floor(Math.random() * symbols.length)];
+
+      document.getElementById('reel1').innerText = r1;
+      document.getElementById('reel2').innerText = r2;
+      document.getElementById('reel3').innerText = r3;
+
+      if (r1 === r2 && r2 === r3) {
+        alert("Jackpot! +50 coins");
+        coins += 50;
+      } else if (r1 === r2 || r2 === r3 || r1 === r3) {
+        alert("Small Win! +20 coins");
+        coins += 20;
+      }
+
+      document.getElementById('coin-balance').innerText = coins;
+      localStorage.setItem('coins', coins);
+    }
+  </script>
+
+</body>
+</html>
