@@ -1,52 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Register - Pai Game-Zone</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register 🎯 Pai Game-Zone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('casino-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .register-box {
+      background: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background: gold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: orange;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Register</h1>
-    <form id="registerForm">
-      <input type="text" id="username" placeholder="Username" required autocomplete="off" />
-      <input type="password" id="password" placeholder="Password" required autocomplete="off" />
-      <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Login here</a></p>
-    <div id="message"></div>
+
+  <div class="register-box">
+    <h2>🎯 Register</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="register()">Register</button>
   </div>
 
   <script>
-    const form = document.getElementById('registerForm');
-    const msg = document.getElementById('message');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let username = document.getElementById('username').value.trim();
-      let password = document.getElementById('password').value.trim();
+    function register() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
 
       if (!username || !password) {
-        msg.innerHTML = '<p class="error">Please fill all fields</p>';
+        alert('Username နဲ့ Password ဖြည့်ပါ');
         return;
       }
 
-      let users = JSON.parse(localStorage.getItem('users')) || {};
+      let users = JSON.parse(localStorage.getItem('users') || '{}');
 
       if (users[username]) {
-        msg.innerHTML = '<p class="error">Username already exists!</p>';
+        alert('အကောင့်ရှိပြီးသားပါ');
         return;
       }
 
-      users[username] = { password: password, coins: 50 };
+      users[username] = { password: password, coins: 0 };
       localStorage.setItem('users', JSON.stringify(users));
-      msg.innerHTML = '<p class="success">Registered successfully! You get 50 starting coins.</p>';
+      localStorage.setItem('loggedInUser', username);
 
-      // Redirect to login after 2 seconds
-      setTimeout(() => {
-        window.location.href = 'login.html';
-      }, 2000);
-    });
+      alert('Register สำเร็จ! ✅');
+      window.location.href = 'index.html';
+    }
   </script>
+
 </body>
 </html>
