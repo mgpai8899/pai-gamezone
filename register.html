@@ -4,49 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Register 🎯 Pai Game-Zone</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('casino-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: #fff;
-    }
-    .register-box {
-      background: rgba(0,0,0,0.7);
-      padding: 30px;
-      border-radius: 12px;
-      width: 300px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-    }
-    button {
-      background: gold;
-      cursor: pointer;
-    }
-    button:hover {
-      background: orange;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg">
 
-  <div class="register-box">
+  <div class="box">
     <h2>🎯 Register</h2>
     <input type="text" id="username" placeholder="Username" required>
     <input type="password" id="password" placeholder="Password" required>
     <button onclick="register()">Register</button>
+    <p style="font-size: 12px;">Already have an account? <a href="login.html" style="color: gold;">Login</a></p>
   </div>
 
   <script>
