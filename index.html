@@ -1,6 +1,52 @@
-<!-- Main Lobby Page -->
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Pai Game-Zone Lobby</title></head>
-<body><h1>Lobby</h1><p>Tabs to Slot, Card, Fish Games</p></body>
+<head>
+  <meta charset="UTF-8">
+  <title>Lobby - Pai Game-Zone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('assets/background.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .lobby {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+    }
+    .lobby h2 {
+      margin-bottom: 30px;
+    }
+    .lobby a {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: gold;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+    .lobby a:hover {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="lobby">
+    <h2>Welcome to Pai Game-Zone</h2>
+    <a href="slot-games.html" target="_blank">🎰 Slot Games</a>
+    <a href="card-games.html" target="_blank">🃏 Card Games</a>
+    <a href="fish-games.html" target="_blank">🐟 Fish Games</a>
+    <a href="other-games.html" target="_blank">🎮 Other Games</a>
+  </div>
+</body>
 </html>
