@@ -1,1 +1,52 @@
-body { font-family: Arial; background: #111; color: white; }
+/* style.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('assets/background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #ff9f1c;
+  color: white;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
