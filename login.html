@@ -1,1 +1,80 @@
-<!DOCTYPE html><html><head><title>Login</title></head><body><h1>Login Page</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Pai Game-Zone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+    .login-box img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: gold;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <img src="logo.png" alt="Pai Game-Zone Logo">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p><a href="register.html" style="color: gold;">Don't have an account? Register</a></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const users = JSON.parse(localStorage.getItem("users") || "{}");
+
+      if (users[username] && users[username].password === password) {
+        localStorage.setItem("loggedInUser", username);
+        alert("Login Success!");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid username or password!");
+      }
+    }
+  </script>
+
+</body>
+</html>
