@@ -1,10 +1,9 @@
 /* style.css */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: url('assets/background.png') no-repeat center center fixed;
+  background-image: url('background.png');
   background-size: cover;
-  color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
