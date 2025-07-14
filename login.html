@@ -58,6 +58,12 @@
     <p><a href="register.html" style="color: gold;">Don't have an account? Register</a></p>
   </div>
   <script>
+  const user = localStorage.getItem("loggedInUser");
+  if (!user) {
+    window.location.href = "login.html";
+  }
+  </script>
+  <script>
     function login() {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
