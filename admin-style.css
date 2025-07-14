@@ -1,1 +1,28 @@
-body { font-family: Arial; background: #222; color: orange; }
+/* admin-style.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+.admin-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #ff4747;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
