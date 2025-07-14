@@ -1,65 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Register - Pai Game-Zone</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('assets/background.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-box {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      width: 300px;
-    }
-    .login-box img {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: gold;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: orange;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-box">
-    <img src="assets/logo.png" alt="Pai Game-Zone Logo">
+  <div class="container">
+    <img src="assets/logo.png" class="logo" alt="Logo">
     <h2>Register</h2>
-    <input type="text" id="regUsername" placeholder="Username">
-    <input type="password" id="regPassword" placeholder="Password">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password">
-    <button onclick="register()">Register</button>
-    <p><a href="login.html" style="color: gold;">Already have an account? Login</a></p>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Confirm Password">
+    <button onclick="location.href='login.html'">Register</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
-  <script>
-    function register() {
-      const username = document.getElementById("regUsername").value;
-      const password = document.getElementById("regPassword").value;
+</body>
+</html>
